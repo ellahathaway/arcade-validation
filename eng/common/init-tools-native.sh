@@ -13,7 +13,7 @@ global_json_file="$(dirname "$(dirname "${scriptroot}")")/global.json"
 declare -a native_assets
 
 . $scriptroot/pipeline-logging-functions.sh
-. $scriptroot/native/common-library.sh
+# . $scriptroot/native/common-library.sh
 
 while (($# > 0)); do
   lowerI="$(echo $1 | tr "[:upper:]" "[:lower:]")"

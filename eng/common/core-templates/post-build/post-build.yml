@@ -153,7 +153,34 @@ stages:
             arguments: -PackagesPath $(Build.ArtifactStagingDirectory)/PackageArtifacts/
 
     - job:
-      displayName: Signing Validation
+      displayName: Signing Validation - Mac
+      condition: and( eq( ${{ parameters.enableSigningValidation }}, 'true'), ne( variables['PostBuildSign'], 'true'))
+      pool:
+        name: Azure Pipelines
+        image: macos-latest
+        os: macOS
+      steps:
+      - template: /eng/common/core-templates/post-build/validate-signing.yml
+        parameters:
+          continueOnError: false
+          OS: Mac
+
+    - job:
+      displayName: Signing Validation - Linux
+      condition: and( eq( ${{ parameters.enableSigningValidation }}, 'true'), ne( variables['PostBuildSign'], 'true'))
+      container: LinuxContainer
+      pool:
+        name: NetCore1ESPool-Internal
+        image: 1es-ubuntu-2204
+        os: linux
+      steps:
+      - template: /eng/common/core-templates/post-build/validate-signing.yml
+        parameters:
+          continueOnError: false
+          OS: Linux
+
+    - job:
+      displayName: Signing Validation - Windows
       condition: and( eq( ${{ parameters.enableSigningValidation }}, 'true'), ne( variables['PostBuildSign'], 'true'))
       pool:
         # We don't use the collection uri here because it might vary (.visualstudio.com vs. dev.azure.com)

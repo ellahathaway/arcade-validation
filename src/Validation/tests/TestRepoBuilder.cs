@@ -291,6 +291,7 @@ SOFTWARE.";
     <add key=""dotnet8"" value=""https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json"" />
     <add key=""dotnet-tools"" value=""https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json"" />
     <add key=""dotnet-public"" value=""https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-public/nuget/v3/index.json"" />
+    <add key=""general-testing"" value=""https://pkgs.dev.azure.com/dnceng/public/_packaging/general-testing/nuget/v3/index.json"" />
   </packageSources>
 </configuration>
 ";
